@@ -1,0 +1,16 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 2em;
+}
+
+table {
+    display: flex;
+    /* justify-content: flex-end; */
+    line-height: 2em;
+}
+
+.error {
+    color: red;
+}
