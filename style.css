@@ -7,7 +7,6 @@ form {
 
 table {
     display: flex;
-    /* justify-content: flex-end; */
     line-height: 2em;
 }
 
