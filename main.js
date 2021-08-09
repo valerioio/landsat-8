@@ -5,6 +5,7 @@ const postcode = document.querySelector('#postcode');
 const dimensions = document.querySelector('#dimensions');
 const error = document.querySelector('.error');
 const submit = document.querySelector('#submit');
+const image = document.querySelector('img');
 const hide = document.querySelector('#hide');
 const box = document.querySelector('#box');
 let [errorMessage, latitude, longitude] = ['', NaN, NaN];
@@ -52,7 +53,6 @@ async function getImage() {
     const response = await fetch(`https://api.nasa.gov/planetary/earth/imagery?lon=${longitude}&lat=${latitude}&dim=${dim}&date=${date.value}&api_key=DEMO_KEY`);
     const blob = await response.blob();
     const url = URL.createObjectURL(blob);
-    console.log(url);
     return url;
 }
 
@@ -66,8 +66,8 @@ async function handleBlurClick(path) {
 // handle click on the submit buttons, and show the image
 async function handleClick() {
     const url = await getImage()
-    document.body.style = `background-image: url(${url})`;
-    // document.querySelector('img').src = url;
+    image.src = url;
+    // document.body.style = `background-image: url(${url})`;
 }
 
 // handle click on hide button, and show or hide the box
@@ -77,7 +77,7 @@ function handleClickHide() {
         box.remove()
     } else {
         hide.innerText = '⯇';
-        document.body.insertBefore(box, hide);
+        hide.insertAdjacentElement('beforebegin', box);
     }
 }
 
