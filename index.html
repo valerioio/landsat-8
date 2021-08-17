@@ -8,61 +8,6 @@
         <link href="style.css" rel="stylesheet" />
     </head>
     <body>
-        <div id='box-and-hide'>
-            <div id='box'>
-                <form>
-                    <label for="postcode">Postcode
-                        <input id='postcode' type='text'>
-                        <button id='random' type='button'>Random</button>
-                        <br />
-                        <span class='error'></span>
-                    </label>
-                    <label for="date">Date of image
-                        <input id="date" type="date" min="2000-01-01">
-                    </label>
-                    <label for="dimensions">Width and height of image in degrees [0.01 - 10]
-                        <input id='dimensions' type='number' min='0.01' max='10' step='0.01' placeholder='1'>
-                    </label>
-                    <button id='submit' type='button'>Submit</button>
-                </form>
-                <table>
-                    <tr>
-                        <td>Country</td>
-                        <td id='country'></td>
-                    </tr>
-                    <tr>
-                        <td>Region</td>
-                        <td id='region'></td>
-                    </tr>
-                    <tr>
-                        <td>Parish</td>
-                        <td id='parish'></td>
-                    </tr>
-                    <tr>
-                        <td>County</td>
-                        <td id='admin_county'></td>
-                    </tr>
-                    <tr>
-                        <td>District</td>
-                        <td id='admin_district'></td>
-                    </tr>
-                    <tr>
-                        <td>Ward</td>
-                        <td id='admin_ward'></td>
-                    </tr>
-                    <tr>
-                        <td>Latitude</td>
-                        <td id='latitude'></td>
-                    </tr>
-                    <tr>
-                        <td>Longitude</td>
-                        <td id='longitude'></td>
-                    </tr>
-                </table>
-            </div>
-            <button id='hide'>&#11207</button>
-        </div>
-        <img />
         <script src='main.js'></script>
     </body>
 </html>

@@ -1,16 +1,91 @@
-const date = document.querySelector('#date');
-const form = document.querySelector('form');
-const table = document.querySelector('table');
-const postcode = document.querySelector('#postcode');
-const dimensions = document.querySelector('#dimensions');
-const error = document.querySelector('.error');
-const submit = document.querySelector('#submit');
-const image = document.querySelector('img');
-const hide = document.querySelector('#hide');
-const box = document.querySelector('#box');
-let [errorMessage, latitude, longitude] = ['', NaN, NaN];
-table.remove();
+const boxAndHideButton = document.createElement('div');
+boxAndHideButton.id = 'box-and-hide';
+document.body.appendChild(boxAndHideButton);
+
+const box = document.createElement('div');
+box.id = 'box';
+boxAndHideButton.appendChild(box);
+
+const form = document.createElement('form');
+box.appendChild(form);
+
+const postcodeLabel = document.createElement('label');
+postcodeLabel.for = 'postcode';
+postcodeLabel.innerText = 'Postcode';
+form.appendChild(postcodeLabel);
+
+const postcode = document.createElement('input');
+postcode.id = 'postcode';
+postcode.type = 'text';
+postcodeLabel.appendChild(postcode);
+
+const random = document.createElement('button');
+random.id = 'random';
+random.type = 'button';
+random.innerText = 'Random';
+postcodeLabel.appendChild(random);
+
+postcodeLabel.appendChild(document.createElement('br'));
+
+const error = document.createElement('span');
+error.classList.add('error')
+postcodeLabel.appendChild(error);
+
+const dateLabel = document.createElement('label');
+dateLabel.for = 'date';
+dateLabel.innerText = 'Date of image';
+form.appendChild(dateLabel);
+
+const date = document.createElement('input');
+date.id = 'date';
+date.type = 'date';
+date.min = '2000-01-01';
+dateLabel.appendChild(date);
+
+const dimensionsLabel = document.createElement('label');
+dimensionsLabel.for = 'dimensions';
+dimensionsLabel.innerText = 'Width and height of image in degrees [0.01 - 10]';
+form.appendChild(dimensionsLabel);
+
+const dimensions = document.createElement('input');
+dimensions.id = 'dimensions';
+dimensions.type = 'number';
+dimensions.min = 0.01;
+dimensions.max = 10;
+dimensions.step = 0.01;
+dimensions.placeholder = '1';
+dimensionsLabel.appendChild(dimensions);
+
+const submit = document.createElement('button');
+submit.it = 'submit';
+submit.type = 'button';
 submit.disabled = true;
+submit.innerText = 'Submit';
+form.appendChild(submit);
+
+const table = document.createElement('table');
+const tableFields = [['Country', 'country'], ['Region', 'region'], ['Parish', 'parish'], ['County', 'admin_county'], ['District', 'admin_district'], ['Ward', 'admin_ward'], ['Latitude', 'latitude'], ['Longitude', 'longitude']];
+for (const field of tableFields) {
+    const [name, id] = field;
+    const row = document.createElement('tr');
+    table.appendChild(row);
+    const rowName = document.createElement('td');
+    rowName.innerText = name;
+    row.appendChild(rowName);
+    const rowValue = document.createElement('td');
+    rowValue.id = id;
+    row.appendChild(rowValue);
+}
+
+const hide = document.createElement('button');
+hide.id = 'hide';
+hide.innerText = '⯇'
+boxAndHideButton.appendChild(hide);
+
+const image = document.createElement('img');
+document.body.appendChild(image);
+
+let [errorMessage, latitude, longitude] = ['', NaN, NaN];
 
 // set today's date as max value and default value for the date input
 const zeroFill = number => number < 10 ? '0' + number : number;
